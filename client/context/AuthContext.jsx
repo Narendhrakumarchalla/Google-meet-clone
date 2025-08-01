@@ -9,7 +9,7 @@ const AuthContext = ({children}) => {
     const [token, setToken] = useState( localStorage.getItem('token') || null );
     const [loading, setLoading] = useState(true);
 
-    axios.defaults.baseURL = "http://localhost:5000/api";
+    axios.defaults.baseURL =import.meta.env.VITE_API_URL || 'https://google-meet-clone-dyml.onrender.com/api';
     const Login = async ({email, password}) => {
         try {
             const {data} = await axios.post('/auth/login', { email, password });
